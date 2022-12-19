@@ -1,5 +1,5 @@
 import { Connection } from "typeorm";
-import createConnection from "../../../../database";
+import { createNewConnection } from "../../../../database";
 import request from "supertest";
 import { app } from "../../../../app";
 import { v4 as uuid } from "uuid";
@@ -10,7 +10,7 @@ let connection: Connection;
 describe("Show User Profile", () => {
 
   beforeAll(async() => {
-    connection = await createConnection();
+    connection = await createNewConnection();
     await connection.runMigrations();
 
     const id = uuid();

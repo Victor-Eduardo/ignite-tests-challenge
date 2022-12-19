@@ -1,5 +1,5 @@
 import { Connection } from "typeorm";
-import createConnection from "../../../../database";
+import { createNewConnection } from "../../../../database";
 import { v4 as uuid } from "uuid";
 import { hash } from "bcryptjs";
 import request from "supertest";
@@ -10,7 +10,7 @@ let connection: Connection;
 describe("Get balance", () => {
   
   beforeAll(async() => {
-    connection = await createConnection();
+    connection = await createNewConnection();
     await connection.runMigrations();
 
     const id = uuid();

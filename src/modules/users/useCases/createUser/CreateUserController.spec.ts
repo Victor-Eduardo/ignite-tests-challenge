@@ -1,4 +1,4 @@
-import createConnection from "../../../../database";
+import { createNewConnection } from "../../../../database";
 import request from "supertest";
 import { Connection } from "typeorm";
 
@@ -8,7 +8,7 @@ let connection: Connection;
 
 describe("Create User", () => {
   beforeAll(async() => {
-    connection = await createConnection();
+    connection = await createNewConnection();
     await connection.runMigrations();
   });
 

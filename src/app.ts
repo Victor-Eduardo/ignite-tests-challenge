@@ -1,4 +1,7 @@
 import 'reflect-metadata';
+
+import "dotenv/config";
+
 import 'express-async-errors';
 
 import express from 'express';
@@ -8,8 +11,11 @@ import './database';
 import './shared/container';
 import { router } from './routes';
 import { AppError } from './shared/errors/AppError';
+import { createNewConnection } from './database';
 
 const app = express();
+
+createNewConnection();
 
 app.use(cors());
 app.use(express.json());
